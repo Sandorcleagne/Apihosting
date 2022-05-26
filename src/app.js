@@ -1,6 +1,6 @@
 const express = require("express");
 require("./db/conn");
-const Consultant = require("./models/Consultant");
+const Blog = require("./models/Blog");
 const app = express();
 const port = process.env.PORT || 8000;
 // app.get("/", (req, res) => {
@@ -20,9 +20,9 @@ app.use(express.json());
 //       res.status(400).send(error);
 //     }); // to save the in mongodb
 // });
-app.post("/consultants", async (req, res) => {
+app.post("/blogs", async (req, res) => {
   try {
-    const user = new Consultant(req.body);
+    const user = new Blog(req.body);
     const createUser = await user.save();
     res.status(201).send(createUser);
   } catch (error) {
@@ -31,16 +31,16 @@ app.post("/consultants", async (req, res) => {
 });
 
 // read the data of the users
-app.get("/consultants", async (req, res) => {
+app.get("/blogs", async (req, res) => {
   try {
-    const userData = await Consultant.find();
+    const userData = await Blog.find();
     res.send(userData);
   } catch (error) {
     res.send(error);
   }
 });
 //get indivisual user data
-app.get("/consultant/:id", (req, res) => {
+app.get("/blog/:id", (req, res) => {
   try {
     const _id = req.params.id;
     console.log(_id);
