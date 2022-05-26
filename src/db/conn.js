@@ -1,7 +1,7 @@
 const mangoose = require("mongoose");
 // This is returning us promise that's why we are using then and catch
 mangoose
-  .connect("mongodb://localhost:27017/users-api", {
+  .connect("mongodb://localhost:27017/consultant", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
